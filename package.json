@@ -1,0 +1,211 @@
+{
+    "name": "@youwol/fv-code-mirror-editors",
+    "keywords": [
+        "html",
+        "reactive-programming",
+        "rxjs",
+        "view",
+        "tree"
+    ],
+    "version": "0.0.1-wip",
+    "description": "Tree views using flux-view",
+    "author": "Guillaume Reinisch",
+    "license": "MIT",
+    "homepage": "",
+    "main": "dist/@youwol/fv-code-mirror-editors.js",
+    "types": "src/index.ts",
+    "scripts": {
+        "build": "yarn build:dev",
+        "build:dev": "webpack --mode development",
+        "build:prod": "webpack --mode production",
+        "test": "jest -c ./jest.config.js --rootDir .",
+        "test-coverage": "jest -c ./jest.config.js --rootDir . --collect-coverage --collectCoverageFrom=./src/lib/**/*.ts --coverageDirectory=./coverage/$TARGET --runInBand",
+        "publish-npm-public": "yarn build:prod && yarn test-coverage && yarn publish --access public",
+        "lint-prettier": "prettier --check .",
+        "lint-eslint": "eslint .",
+        "eslint-fix-rule-ts": "yarn eslint --no-eslintrc --fix --parser '@typescript-eslint/parser' --parser-options '{\"tsconfigRootDir\" : \"./\", \"project\" : [\"tsconfig.json\"]}' --plugin '[\"jest\", \"import\", \"unused-imports\", \"@typescript-eslint\"]' --no-ignore 'src/**/*.ts' --rule",
+        "eslint-check-rule-ts": "yarn eslint --no-eslintrc --parser '@typescript-eslint/parser' --parser-options '{\"tsconfigRootDir\" : \"./\", \"project\" : [\"tsconfig.json\"]}' --plugin '[\"jest\", \"import\", \"unused-imports\", \"@typescript-eslint\"]' --no-ignore 'src/**/*.ts' --rule",
+        "lint": "yarn lint-prettier && yarn lint-eslint",
+        "format": "yarn format-prettier && yarn format-eslint",
+        "format-prettier": "prettier --write .",
+        "format-eslint": "eslint --fix .",
+        "doc": "typedoc src/ --exclude src/index.ts --exclude src/tests --out dist/docs --theme default"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/youwol/fv-tree"
+    },
+    "peerDependencies": {
+        "@youwol/flux-view": "^0.1.1",
+        "rxjs": "6.x",
+        "@youwol/cdn-client": "^0.1.3"
+    },
+    "devDependencies": {
+        "@types/node": "14.14.16",
+        "@types/uuid": "^8.3.4",
+        "@types/jest": "^27.4.1",
+        "@youwol/flux-view": "^0.1.0",
+        "@typescript-eslint/eslint-plugin": "^5.0.0",
+        "@typescript-eslint/parser": "^5.0.0",
+        "eslint": "8.10.0",
+        "eslint-config-prettier": "^8.4.0",
+        "eslint-plugin-eslint-comments": "^3.2.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-jest": "^26.1.1",
+        "eslint-plugin-unused-imports": "^2.0.0",
+        "prettier": "^2.5.1",
+        "prettier-plugin-properties": "^0.1.0",
+        "@types/codemirror": "^5.60.5",
+        "@typescript/vfs": "^1.3.5",
+        "@youwol/cdn-client": "^0.1.3",
+        "jest": "27.5.1",
+        "jest-junit": "13.0.0",
+        "rxjs": "6.x",
+        "ts-loader": "^9.2.7",
+        "ts-jest": "27.1.3",
+        "typedoc": "^0.22.15",
+        "source-map-loader": "2.0.1",
+        "uuid": "8.3.2",
+        "typescript": "^4.5.5",
+        "webpack": "5.69.1",
+        "webpack-bundle-analyzer": "^4.5.0",
+        "webpack-cli": "4.9.2",
+        "webpack-dev-server": "4.7.4"
+    },
+    "youwol": {
+        "cdnDependencies": {
+            "@youwol/flux-view": "^0.1.1",
+            "@youwol/cdn-client": "^0.1.3",
+            "rxjs": "6.x",
+            "typescript": "^4.5.5",
+            "codemirror": "5.52.0"
+        }
+    },
+    "prettier": {
+        "printWidth": 80,
+        "tabWidth": 4,
+        "useTabs": false,
+        "semi": false,
+        "singleQuote": true,
+        "quoteProps": "as-needed",
+        "trailingComma": "all",
+        "bracketSpacing": true,
+        "arrowParens": "always",
+        "rangeStart": 0,
+        "requirePragma": false,
+        "insertPragma": false,
+        "proseWrap": "preserve",
+        "htmlWhitespaceSensitivity": "css",
+        "endOfLine": "lf",
+        "embeddedLanguageFormatting": "auto",
+        "keySeparator": "="
+    },
+    "eslintConfig": {
+        "root": true,
+        "ignorePatterns": [
+            "/dist/",
+            "/coverage/"
+        ],
+        "env": {
+            "browser": true,
+            "es2020": true
+        },
+        "extends": [
+            "eslint:recommended",
+            "plugin:eslint-comments/recommended",
+            "plugin:import/recommended",
+            "prettier"
+        ],
+        "rules": {
+            "eslint-comments/require-description": [
+                "error"
+            ],
+            "eslint-comments/no-unused-disable": [
+                "error"
+            ],
+            "curly": [
+                "error"
+            ],
+            "no-irregular-whitespace": [
+                "error",
+                {
+                    "skipComments": true,
+                    "skipTemplates": true
+                }
+            ]
+        },
+        "overrides": [
+            {
+                "files": [
+                    "webpack.config.js",
+                    "jest.config.js"
+                ],
+                "env": {
+                    "node": true
+                }
+            },
+            {
+                "files": [
+                    "*.ts"
+                ],
+                "extends": [
+                    "plugin:@typescript-eslint/recommended",
+                    "plugin:import/typescript",
+                    "prettier"
+                ],
+                "parser": "@typescript-eslint/parser",
+                "parserOptions": {
+                    "tsconfigRootDir": "./",
+                    "project": [
+                        "./tsconfig.json"
+                    ]
+                },
+                "plugins": [
+                    "unused-imports",
+                    "@typescript-eslint"
+                ],
+                "rules": {
+                    "@typescript-eslint/no-namespace": "off",
+                    "@typescript-eslint/no-unused-vars": "off",
+                    "unused-imports/no-unused-imports": "error",
+                    "unused-imports/no-unused-vars": [
+                        "warn",
+                        {
+                            "vars": "all",
+                            "varsIgnorePattern": "^_",
+                            "args": "after-used",
+                            "argsIgnorePattern": "^_"
+                        }
+                    ],
+                    "@typescript-eslint/no-unnecessary-type-assertion": "error"
+                }
+            },
+            {
+                "files": [
+                    "*.test.ts"
+                ],
+                "extends": [
+                    "plugin:jest/recommended",
+                    "plugin:jest/style",
+                    "prettier"
+                ],
+                "plugins": [
+                    "jest"
+                ],
+                "rules": {
+                    "jest/expect-expect": [
+                        "error",
+                        {
+                            "assertFunctionNames": [
+                                "expect",
+                                "verify"
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "noInlineConfig": false,
+        "reportUnusedDisableDirectives": true
+    }
+}
