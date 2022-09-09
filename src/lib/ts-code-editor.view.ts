@@ -1,8 +1,8 @@
-import { CodeEditorView, SourceCode } from './code-editor.view'
+import { CodeEditorView } from './code-editor.view'
 import { BehaviorSubject, ReplaySubject } from 'rxjs'
 import { createDefaultMapFromCDN } from './vfs_default_map_cdn'
 import CodeMirror from 'codemirror'
-import { filter, map, take, tap, withLatestFrom } from 'rxjs/operators'
+import { filter, map, take, withLatestFrom } from 'rxjs/operators'
 
 import * as ts from 'typescript'
 import {
@@ -10,8 +10,7 @@ import {
     createVirtualTypeScriptEnvironment,
 } from '@typescript/vfs'
 import { VirtualDOM } from '@youwol/flux-view'
-
-type SourcePath = string
+import { SourceCode, SourcePath } from './common'
 
 export class CodeIdeState {
     public readonly entryPoint: SourcePath
@@ -60,7 +59,7 @@ export class CodeIdeState {
         )
         createDefaultMapFromCDN(
             { target: ts.ScriptTarget.ES2020 },
-            '4.6.2',
+            '4.7.4',
         ).then((fsMap) => {
             files.forEach((file) => {
                 fsMap.set(file.path.substring(1), file.content)
@@ -68,21 +67,18 @@ export class CodeIdeState {
             this.fsMap$.next(fsMap)
         })
 
-        this.currentFile$
-            .pipe(tap((file) => console.log('Current files changed', file)))
-            .subscribe((file) => {
-                const fsMap = this.fsMap$.getValue()
-                fsMap && fsMap.set(file.path.substring(1), file.content)
-                fsMap && this.fsMap$.next(fsMap)
-            })
+        this.currentFile$.subscribe((file) => {
+            const fsMap = this.fsMap$.getValue()
+            fsMap && fsMap.set(file.path.substring(1), file.content)
+            fsMap && this.fsMap$.next(fsMap)
+        })
     }
 
     parseCurrentFile$() {
-        console.log('Parse Current File')
         return this.currentFile$.pipe(
             take(1),
             map((file) => {
-                let transpiled = ts
+                const transpiled = ts
                     .transpileModule(file.content, {
                         compilerOptions,
                     })
@@ -134,8 +130,10 @@ export class TsCodeEditorView extends CodeEditorView {
             if (options.editorKind != 'TsCodeEditorView') {
                 return []
             }
-            let fsMapBase = this.ideState.fsMap$.getValue()
-            if (!fsMapBase) return
+            const fsMapBase = this.ideState.fsMap$.getValue()
+            if (!fsMapBase) {
+                return
+            }
             const highlights = getHighlights(fsMapBase, text)
             return (
                 highlights

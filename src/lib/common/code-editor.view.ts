@@ -1,23 +1,27 @@
-import { BehaviorSubject, combineLatest, ReplaySubject } from 'rxjs'
-import { HTMLElement$, VirtualDOM } from '@youwol/flux-view'
+import { combineLatest, ReplaySubject } from 'rxjs'
+import { SourcePath } from './models'
 import CodeMirror from 'codemirror'
-import { distinctUntilChanged } from 'rxjs/operators'
-import { SourceCode } from './common'
+import { HTMLElement$, VirtualDOM } from '@youwol/flux-view'
+import { IdeState } from './ide.state'
+import { filter } from 'rxjs/operators'
 
+const defaultConfig = {
+    value: '',
+    lineNumbers: true,
+    theme: 'blackboard',
+    lineWrapping: false,
+    indentUnit: 4,
+}
 export class CodeEditorView {
-    public readonly config = {
-        value: '',
-        lineNumbers: true,
-        theme: 'blackboard',
-        lineWrapping: false,
-        indentUnit: 4,
-    }
+    public readonly editorUid = `${Math.floor(Math.random()) * 1e6}`
+    public readonly ideState: IdeState
+    public readonly config: { [k: string]: unknown }
     public readonly language: string
     public readonly class = 'w-100 h-100 d-flex flex-column overflow-auto'
     public readonly style = {
         'font-size': 'initial',
     }
-    public readonly file$: BehaviorSubject<SourceCode>
+    public readonly path: SourcePath
     public readonly change$ = new ReplaySubject<CodeMirror.EditorChange[]>(1)
     public readonly cursor$ = new ReplaySubject<CodeMirror.Position>(1)
     public readonly children: VirtualDOM[]
@@ -25,24 +29,30 @@ export class CodeEditorView {
     public readonly nativeEditor$ = new ReplaySubject<CodeMirror.Editor>(1)
 
     constructor(params: {
-        file$: BehaviorSubject<SourceCode>
+        ideState: IdeState
+        path: SourcePath
         language: string
         config?: unknown
     }) {
         Object.assign(this, params)
+
         const config = {
+            ...defaultConfig,
             ...this.config,
             mode: this.language,
-            value: this.file$.getValue().content,
+            value: this.ideState.updates$[this.path].getValue().content,
         }
         combineLatest([
-            this.file$.pipe(
-                distinctUntilChanged((f1, f2) => f1.path == f2.path),
+            this.ideState.updates$[this.path].pipe(
+                filter((update) => update.updateOrigin.uid != this.editorUid),
             ),
             this.nativeEditor$,
-        ]).subscribe(([file, nativeEditor]) => {
-            nativeEditor.setValue(file.content)
+        ]).subscribe(([{ content }, nativeEditor]) => {
+            const cursor = nativeEditor.getCursor()
+            nativeEditor.setValue(content)
+            nativeEditor.setCursor(cursor)
         })
+
         this.children = [
             {
                 id: 'code-mirror-editor',
@@ -61,9 +71,10 @@ export class CodeEditorView {
                         ) {
                             return
                         }
-                        this.file$.next({
+                        this.ideState.update({
+                            path: this.path,
                             content: editor.getValue(),
-                            path: this.file$.getValue().path,
+                            updateOrigin: { uid: this.editorUid },
                         })
                     })
                     elem.querySelector('.CodeMirror').classList.add('h-100')
