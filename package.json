@@ -1,7 +1,7 @@
 {
     "name": "@youwol/fv-code-mirror-editors",
     "description": "Code editors (typescript, python) using codemirror & flux-view.",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "author": "greinisch@youwol.com",
     "homepage": "https://github.com/youwol/fv-code-mirror-editors#README.md",
     "main": "dist/@youwol/fv-code-mirror-editors.js",
@@ -60,18 +60,18 @@
         ]
     },
     "dependencies": {
-        "@youwol/flux-view": "^1.0.0",
+        "@youwol/flux-view": "^1.0.3",
         "rxjs": "^6.5.5",
-        "@youwol/cdn-client": "^1.0.1",
+        "@youwol/cdn-client": "^1.0.2",
         "codemirror": "^5.52.0",
         "typescript": "^4.7.4",
         "@typescript/vfs": "^1.3.5"
     },
     "youwol": {
         "cdnDependencies": {
-            "@youwol/flux-view": "^1.0.0",
+            "@youwol/flux-view": "^1.0.3",
             "rxjs": "^6.5.5",
-            "@youwol/cdn-client": "^1.0.1",
+            "@youwol/cdn-client": "^1.0.2",
             "codemirror": "^5.52.0",
             "typescript": "^4.7.4"
         }

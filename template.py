@@ -20,9 +20,9 @@ template = Template(
     dependencies=Dependencies(
         runTime=RunTimeDeps(
             load={
-                "@youwol/flux-view": "^1.0.0",
+                "@youwol/flux-view": "^1.0.3",
                 "rxjs": "^6.5.5",
-                "@youwol/cdn-client": "^1.0.1",
+                "@youwol/cdn-client": "^1.0.2",
                 "codemirror": "^5.52.0",
                 "typescript": "^4.7.4",
                 "@typescript/vfs": "^1.3.5",
