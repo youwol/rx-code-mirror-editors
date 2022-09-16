@@ -73,7 +73,7 @@ const exportedSymbols = {
 export const setup = {
     name:'@youwol/fv-code-mirror-editors',
         assetId:'QHlvdXdvbC9mdi1jb2RlLW1pcnJvci1lZGl0b3Jz',
-    version:'0.1.1',
+    version:'0.1.2-wip',
     shortDescription:"Code editors (typescript, python) using codemirror & flux-view.",
     developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/fv-code-mirror-editors',
     npmPackage:'https://www.npmjs.com/package/@youwol/fv-code-mirror-editors',
