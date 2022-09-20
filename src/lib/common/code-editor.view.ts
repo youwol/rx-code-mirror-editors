@@ -63,6 +63,11 @@ export class CodeEditorView {
                         config,
                     )
                     this.nativeEditor$.next(editor)
+                    // it does not hurt much, but helps to have right rendering of CM editor
+                    setTimeout(() => {
+                        editor.refresh()
+                    }, 100)
+
                     editor.on('changes', (_, changeObj) => {
                         this.change$.next(changeObj)
                         if (
