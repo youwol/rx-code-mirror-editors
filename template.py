@@ -27,8 +27,6 @@ template = Template(
                 "typescript": "^4.7.4",
                 "@typescript/vfs": "^1.3.5",
             },
-            differed={
-            },
             includedInBundle=["@typescript/vfs"]
         ),
         devTime={
@@ -41,12 +39,21 @@ template = Template(
 
 generate_template(template)
 
+with open('.template/src/auto-generated.ts', 'a') as f:
+    f.write("""
+export const typescriptEntry = {
+    name: `${setup.name}/typescript`,
+    entryPoint: './lib/typescript/index.ts',
+    exportedSymbol: `${setup.name}/typescript_APIv${setup.apiVersion}`,
+    distBundle: `${setup.name}#${setup.version}~dist/${setup.name}/typescript.js`
+}""")
+
 shutil.copyfile(
     src=folder_path / '.template' / 'src' / 'auto-generated.ts',
     dst=folder_path / 'src' / 'auto-generated.ts'
 )
 for file in ['README.md', '.gitignore', '.npmignore', '.prettierignore', 'LICENSE', 'package.json',
-             'tsconfig.json', 'webpack.config.ts']:
+             'tsconfig.json']:
     shutil.copyfile(
         src=folder_path / '.template' / file,
         dst=folder_path / file

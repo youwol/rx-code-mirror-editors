@@ -1,6 +1,6 @@
 import * as path from 'path'
 // Do not shorten following import, it will cause webpack.config file to not compile anymore
-import { setup } from './src/auto-generated'
+import { setup, typescriptEntry } from './src/auto-generated'
 import * as webpack from 'webpack'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 
@@ -10,7 +10,8 @@ const DESTINATION = path.resolve(__dirname, 'dist')
 const webpackConfig: webpack.Configuration = {
     context: ROOT,
     entry: {
-        main: './index.ts',
+        [setup.name]: './lib/index.ts',
+        [typescriptEntry.name]: typescriptEntry.entryPoint,
     },
     plugins: [
         new BundleAnalyzerPlugin({
@@ -23,9 +24,9 @@ const webpackConfig: webpack.Configuration = {
         path: DESTINATION,
         publicPath: `/api/assets-gateway/raw/package/${setup.assetId}/${setup.version}/dist/`,
         libraryTarget: 'umd',
+        library: `[name]_APIv${setup.apiVersion}`,
         umdNamedDefine: true,
-        library: `${setup.name}_APIv${setup.apiVersion}`,
-        filename: setup.name + '.js',
+        filename: '[name].js',
         globalObject: `(typeof self !== 'undefined' ? self : this)`,
     },
     resolve: {

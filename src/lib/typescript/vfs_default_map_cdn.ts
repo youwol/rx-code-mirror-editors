@@ -1,6 +1,6 @@
 import * as ts from 'typescript'
 import { ScriptTarget } from 'typescript'
-import { fetchSource, getUrlBase } from '@youwol/cdn-client'
+import { fetchScript, getUrlBase } from '@youwol/cdn-client'
 
 export function createDefaultMapFromCDN(
     options: ts.CompilerOptions,
@@ -92,26 +92,26 @@ export function createDefaultMapFromCDN(
             `${getUrlBase('typescript', version)}/lib/${filename}`,
         ])
         .map(([filename, url]) =>
-            fetchSource({ name: filename, url }).then(({ content }) => {
+            fetchScript({ name: filename, url }).then(({ content }) => {
                 fsMap.set(`/${filename}`, content)
             }),
         )
     const interfaces = [
-        fetchSource({
+        fetchScript({
             name: 'environment.d.ts',
             url: `${getUrlBase(
                 '@youwol/os-core',
                 'latest',
-            )}/dist/lib/environment.d.ts`,
+            )}/dist/src/lib/environment.d.ts`,
         }).then(({ content }) => {
             fsMap.set(`/environment.ts`, content)
         }),
-        fetchSource({
+        fetchScript({
             name: 'installer.d.ts',
             url: `${getUrlBase(
                 '@youwol/os-core',
                 'latest',
-            )}/dist/lib/installer.d.ts`,
+            )}/dist/src/lib/installer.d.ts`,
         }).then(({ content }) => {
             fsMap.set(`/installer.ts`, content)
         }),
