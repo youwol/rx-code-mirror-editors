@@ -24,6 +24,8 @@ template = Template(
                 "rxjs": "^6.5.5",
                 "@youwol/cdn-client": "^1.0.2",
                 "codemirror": "^5.52.0",
+            },
+            differed={
                 "typescript": "^4.7.4",
                 "@typescript/vfs": "^1.3.5",
             },
