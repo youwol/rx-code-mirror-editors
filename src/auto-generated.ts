@@ -4,11 +4,12 @@ const runTimeDependencies = {
         "@youwol/flux-view": "^1.0.3",
         "rxjs": "^6.5.5",
         "@youwol/cdn-client": "^1.0.2",
-        "codemirror": "^5.52.0",
+        "codemirror": "^5.52.0"
+    },
+    "differed": {
         "typescript": "^4.7.4",
         "@typescript/vfs": "^1.3.5"
     },
-    "differed": {},
     "includedInBundle": [
         "@typescript/vfs"
     ]
@@ -73,17 +74,24 @@ const exportedSymbols = {
 export const setup = {
     name:'@youwol/fv-code-mirror-editors',
         assetId:'QHlvdXdvbC9mdi1jb2RlLW1pcnJvci1lZGl0b3Jz',
-    version:'0.1.1',
+    version:'0.2.0',
     shortDescription:"Code editors (typescript, python) using codemirror & flux-view.",
     developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/fv-code-mirror-editors',
     npmPackage:'https://www.npmjs.com/package/@youwol/fv-code-mirror-editors',
     sourceGithub:'https://github.com/youwol/fv-code-mirror-editors',
     userGuide:'https://l.youwol.com/doc/@youwol/fv-code-mirror-editors',
-    apiVersion:'01',
+    apiVersion:'02',
     runTimeDependencies,
     externals,
     exportedSymbols,
     getDependencySymbolExported: (module:string) => {
         return `${exportedSymbols[module].exportedSymbol}_APIv${exportedSymbols[module].apiKey}`
     }
+}
+
+export const typescriptEntry = {
+    name: `${setup.name}/typescript`,
+    entryPoint: './lib/typescript/index.ts',
+    exportedSymbol: `${setup.name}/typescript_APIv${setup.apiVersion}`,
+    distBundle: `${setup.name}#${setup.version}~dist/${setup.name}/typescript.js`
 }

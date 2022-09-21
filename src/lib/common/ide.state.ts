@@ -21,7 +21,7 @@ export class IdeState {
         params.defaultFileSystem.then((defaultFsMap) => {
             const fsMap = new Map(defaultFsMap)
             params.files.forEach((file) => {
-                fsMap.set(file.path.substring(1), file.content)
+                fsMap.set(file.path, file.content)
             })
             this.fsMap$.next(fsMap)
         })
@@ -59,22 +59,4 @@ export class IdeState {
             updateOrigin: updateOrigin,
         })
     }
-    /*
-    parseCurrentFile$() {
-        return this.currentFile$.pipe(
-            take(1),
-            map((file) => {
-                let transpiled = ts
-                    .transpileModule(file.content, {
-                        compilerOptions,
-                    })
-                    .outputText.replace('export {};', '')
-                return {
-                    tsSrc: file.content,
-                    jsSrc: transpiled,
-                }
-            }),
-        )
-    }
-    */
 }
