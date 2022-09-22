@@ -8,6 +8,7 @@ import { filter, take } from 'rxjs/operators'
 
 export class CodeEditorView extends Common.CodeEditorView {
     public readonly highlights$ = new BehaviorSubject<SrcHighlight[]>([])
+    public readonly ideState: IdeState
 
     constructor(params: {
         ideState: IdeState
@@ -28,14 +29,22 @@ export class CodeEditorView extends Common.CodeEditorView {
                 },
             },
         })
-        this.ideState.fsMap$
+        log.info('CodeEditorView.constructor()')
+
+        this.ideState.environment$
             .pipe(
-                filter((fsMap) => fsMap != undefined),
                 take(1),
+                tap(({ fsMap }) => {
+                    const highlights = getHighlights(
+                        fsMap,
+                        fsMap.get(params.path),
+                    )
+                    this.highlights$.next(highlights)
+                }),
+                mergeMap(() => this.nativeEditor$),
             )
-            .subscribe((fsMap) => {
-                const highlights = getHighlights(fsMap, fsMap.get(params.path))
-                this.highlights$.next(highlights)
+            .subscribe((editor) => {
+                editor.setValue(editor.getValue())
             })
 
         CodeMirror.registerHelper('lint', 'javascript', (text, options) => {
