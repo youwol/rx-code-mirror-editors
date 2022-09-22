@@ -1,5 +1,9 @@
 import { BehaviorSubject, merge } from 'rxjs'
 import { UpdateOrigin, SourceCode, SourceContent, SourcePath } from './models'
+import { logFactory } from './log-factory.conf'
+import { debounceTime, filter } from 'rxjs/operators'
+
+const log = logFactory().getChildLogger('ide.state.ts')
 
 export class IdeState {
     public readonly fsMap$ = new BehaviorSubject<Map<string, string>>(undefined)
@@ -18,11 +22,17 @@ export class IdeState {
     }) {
         Object.assign(this, params)
 
+        this.fsMap$
+            .pipe(filter((fsMap) => fsMap != undefined))
+            .subscribe(() => log.info('IdeState => fsMap updated'))
+
+        log.info('IdeState.constructor()')
         params.defaultFileSystem.then((defaultFsMap) => {
             const fsMap = new Map(defaultFsMap)
             params.files.forEach((file) => {
                 fsMap.set(file.path, file.content)
             })
+            log.info('IdeState => virtual files system initialized')
             this.fsMap$.next(fsMap)
         })
         this.updates$ = params.files.reduce((acc, e) => {
