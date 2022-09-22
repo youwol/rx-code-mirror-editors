@@ -8,8 +8,11 @@ import {
     createVirtualTypeScriptEnvironment,
     VirtualTypeScriptEnvironment,
 } from '@typescript/vfs'
-import { map } from 'rxjs/operators'
+import { filter, map, shareReplay } from 'rxjs/operators'
 import * as ts from 'typescript'
+import { logFactory } from './log-factory.conf'
+
+const log = logFactory().getChildLogger('ide.state.ts')
 
 export const compilerOptions = {
     target: ts.ScriptTarget.ES2020,
@@ -33,10 +36,12 @@ export class IdeState extends Common.IdeState {
                 '4.7.4',
             ),
         })
+        log.info('IdeState.constructor()')
 
         this.environment$ = this.fsMap$.pipe(
             filter((fsMap) => fsMap != undefined),
             map((fsMap) => {
+                log.info('IdeState.constructor => create virtual files system')
                 const system = createSystem(fsMap)
                 return {
                     fsMap,
