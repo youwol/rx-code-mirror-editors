@@ -1,10 +1,14 @@
 import { Common } from '..'
-import { IdeState, SourcePath, SrcHighlight } from '../common'
+import { SourcePath, SrcHighlight } from '../common'
 
 import CodeMirror from 'codemirror'
 import { getHighlights } from './utils'
 import { BehaviorSubject } from 'rxjs'
-import { filter, take } from 'rxjs/operators'
+import { mergeMap, take, tap } from 'rxjs/operators'
+import { IdeState } from './ide.state'
+import { logFactory } from './log-factory.conf'
+
+const log = logFactory().getChildLogger('code-editor.view.ts')
 
 export class CodeEditorView extends Common.CodeEditorView {
     public readonly highlights$ = new BehaviorSubject<SrcHighlight[]>([])
@@ -51,10 +55,7 @@ export class CodeEditorView extends Common.CodeEditorView {
             if (options.editorKind != 'TsCodeEditorView') {
                 return []
             }
-            const fsMapBase = this.ideState.fsMap$.getValue()
-            if (!fsMapBase) {
-                return
-            }
+            log.info('CodeEditorView => apply lint plugin')
             const highlights = getHighlights(fsMapBase, text)
             this.highlights$.next(highlights)
             return highlights.map((highlight) => ({
