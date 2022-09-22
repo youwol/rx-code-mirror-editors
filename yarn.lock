@@ -1312,6 +1312,11 @@
   dependencies:
     rxjs "^6.5.5"
 
+"@youwol/logging@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@youwol/logging/-/logging-0.0.2.tgz#50515dd16af5115e033f0c47cab22753d8d22c36"
+  integrity sha512-OVCOP7a4KPKrFiKiQcTKap5oGLlXvcz/CtxD4PdS7Cg4lgy75vsOCF0d2w7T3KX9y9ir7V/zu1w7HL6Jvu6P3w==
+
 "@youwol/prettier-config@^0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@youwol/prettier-config/-/prettier-config-0.0.1.tgz#482b12d0d75d9cbf9ff7ec09ace826803e1d2206"
