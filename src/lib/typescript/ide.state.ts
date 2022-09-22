@@ -20,7 +20,10 @@ export const compilerOptions = {
 }
 
 export class IdeState extends Common.IdeState {
-    public readonly environment$: Observable<VirtualTypeScriptEnvironment>
+    public readonly environment$: Observable<{
+        environment: VirtualTypeScriptEnvironment
+        fsMap: Map<string, string>
+    }>
 
     constructor(params: { files: SourceCode[] }) {
         super({
@@ -32,15 +35,20 @@ export class IdeState extends Common.IdeState {
         })
 
         this.environment$ = this.fsMap$.pipe(
+            filter((fsMap) => fsMap != undefined),
             map((fsMap) => {
                 const system = createSystem(fsMap)
-                return createVirtualTypeScriptEnvironment(
-                    system,
-                    ['index.ts'],
-                    ts,
-                    compilerOptions,
-                )
+                return {
+                    fsMap,
+                    environment: createVirtualTypeScriptEnvironment(
+                        system,
+                        ['./index.ts'],
+                        ts,
+                        compilerOptions,
+                    ),
+                }
             }),
+            shareReplay({ bufferSize: 1, refCount: true }),
         )
     }
 }
