@@ -38,7 +38,7 @@ export class IdeState {
         merge(...Object.values(this.updates$)).subscribe(
             ({ path, content }) => {
                 const fsMap = this.fsMap$.getValue()
-                fsMap && fsMap.set(path.substring(1), content)
+                fsMap && fsMap.set(path, content)
                 fsMap && this.fsMap$.next(fsMap)
             },
         )
