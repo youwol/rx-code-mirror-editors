@@ -35,13 +35,13 @@ export class IdeState {
                 }),
             }
         }, {})
-        merge(...Object.values(this.updates$)).subscribe(
-            ({ path, content }) => {
+        merge(...Object.values(this.updates$))
+            .pipe(debounceTime(250))
+            .subscribe(({ path, content }) => {
                 const fsMap = this.fsMap$.getValue()
                 fsMap && fsMap.set(path, content)
                 fsMap && this.fsMap$.next(fsMap)
-            },
-        )
+            })
     }
 
     update({
