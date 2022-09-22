@@ -65,6 +65,7 @@
         "@youwol/cdn-client": "^1.0.2",
         "codemirror": "^5.52.0",
         "typescript": "^4.7.4",
+        "@youwol/logging": "^0.1.0",
         "@typescript/vfs": "^1.3.5"
     },
     "youwol": {
@@ -72,7 +73,8 @@
             "@youwol/flux-view": "^1.0.3",
             "rxjs": "^6.5.5",
             "@youwol/cdn-client": "^1.0.2",
-            "codemirror": "^5.52.0"
+            "codemirror": "^5.52.0",
+            "@youwol/logging": "^0.1.0"
         }
     }
 }
