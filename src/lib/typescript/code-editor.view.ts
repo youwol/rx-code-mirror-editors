@@ -52,7 +52,9 @@ export class CodeEditorView extends Common.CodeEditorView {
             })
 
         CodeMirror.registerHelper('lint', 'javascript', (text, options) => {
-            if (options.editorKind != 'TsCodeEditorView') {
+            const fsMapBase = this.ideState.fsMap$.getValue()
+
+            if (options.editorKind != 'TsCodeEditorView' || !fsMapBase) {
                 return []
             }
             log.info('CodeEditorView => apply lint plugin')
