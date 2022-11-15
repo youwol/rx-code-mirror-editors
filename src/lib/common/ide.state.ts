@@ -23,7 +23,10 @@ export class IdeState {
         Object.assign(this, params)
 
         this.fsMap$
-            .pipe(filter((fsMap) => fsMap != undefined))
+            .pipe(
+                filter((fsMap) => fsMap != undefined),
+                debounceTime(500)
+            )
             .subscribe(() => log.info('IdeState => fsMap updated'))
 
         log.info('IdeState.constructor()')
@@ -45,13 +48,6 @@ export class IdeState {
                 }),
             }
         }, {})
-        merge(...Object.values(this.updates$))
-            .pipe(debounceTime(250))
-            .subscribe(({ path, content }) => {
-                const fsMap = this.fsMap$.getValue()
-                fsMap && fsMap.set(path, content)
-                fsMap && this.fsMap$.next(fsMap)
-            })
     }
 
     update({
@@ -63,6 +59,10 @@ export class IdeState {
         content: SourceContent
         updateOrigin: UpdateOrigin
     }) {
+
+        const fsMap = this.fsMap$.value
+        fsMap.set(path, content)
+        this.fsMap$.next(fsMap)
         this.updates$[path].next({
             path,
             content,
