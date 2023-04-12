@@ -30,6 +30,7 @@ template = Template(
             }
         ),
         devTime={
+            "@types/codemirror": "^5.52.0",  # Required to generate doc
             "@types/lz-string": "^1.3.34",  # Required to generate doc
             "lz-string": "^1.4.4",  # Required to generate doc
         }
