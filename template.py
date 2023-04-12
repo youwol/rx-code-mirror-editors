@@ -25,11 +25,12 @@ template = Template(
                 "@youwol/cdn-client": "^1.0.2",
                 "codemirror": "^5.52.0",
                 "typescript": "^4.7.4",
-                "@youwol/logging": "^0.1.0"
-            },
-            includedInBundle={"@typescript/vfs": "^1.3.5"}
+                "@youwol/logging": "^0.1.0",
+                "@typescript/vfs": "^1.4.0"
+            }
         ),
         devTime={
+            "@types/codemirror": "^5.52.0",  # Required to generate doc
             "@types/lz-string": "^1.3.34",  # Required to generate doc
             "lz-string": "^1.4.4",  # Required to generate doc
         }
@@ -43,7 +44,7 @@ template = Template(
             AuxiliaryModule(
                 name='typescript-addon',
                 entryFile="./lib/typescript/index.ts",
-                loadDependencies=["typescript"]
+                loadDependencies=["typescript", "@typescript/vfs"]
             )
         ],
     ),
