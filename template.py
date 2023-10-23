@@ -24,7 +24,7 @@ template = Template(
                 "rxjs": "^6.5.5",
                 "@youwol/cdn-client": "^1.0.2",
                 "codemirror": "^5.52.0",
-                "typescript": "^4.7.4",
+                "typescript": "^5.2.2",
                 "@youwol/logging": "^0.1.0",
                 "@typescript/vfs": "^1.4.0"
             }
