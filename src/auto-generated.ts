@@ -116,7 +116,7 @@ const entries = {
 export const setup = {
     name:'@youwol/fv-code-mirror-editors',
         assetId:'QHlvdXdvbC9mdi1jb2RlLW1pcnJvci1lZGl0b3Jz',
-    version:'0.3.0-wip',
+    version:'0.3.0',
     shortDescription:"Code editors (typescript, python) using codemirror & flux-view.",
     developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/fv-code-mirror-editors&tab=doc',
     npmPackage:'https://www.npmjs.com/package/@youwol/fv-code-mirror-editors',
@@ -162,7 +162,7 @@ export const setup = {
         const parameters = installParameters || {}
         const scripts = [
             ...(parameters.scripts || []),
-            `@youwol/fv-code-mirror-editors#0.3.0-wip~dist/@youwol/fv-code-mirror-editors/${entry.name}.js`
+            `@youwol/fv-code-mirror-editors#0.3.0~dist/@youwol/fv-code-mirror-editors/${entry.name}.js`
         ]
         const modules = [
             ...(parameters.modules || []),
