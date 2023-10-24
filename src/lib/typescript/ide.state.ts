@@ -47,7 +47,7 @@ export class IdeState extends Common.IdeState {
                     fsMap,
                     environment: createVirtualTypeScriptEnvironment(
                         system,
-                        ['./index.ts'],
+                        [],
                         ts,
                         compilerOptions,
                     ),
