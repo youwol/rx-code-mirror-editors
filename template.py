@@ -22,7 +22,7 @@ template = Template(
             externals={
                 "@youwol/flux-view": "^1.0.3",
                 "rxjs": "^6.5.5",
-                "@youwol/cdn-client": "^1.0.2",
+                "@youwol/cdn-client": "^2.1.2",
                 "codemirror": "^5.52.0",
                 "typescript": "^5.2.2",
                 "@youwol/logging": "^0.1.0",
