@@ -20,18 +20,19 @@ export function parseTypescript(tsSrc: string) {
 }
 
 export function getHighlights(fsMap, src) {
-    fsMap.set('index.ts', `${src}`)
+    const filename = 'tmp-entry-to-be-analyzed.ts'
+    fsMap.set(filename, `${src}`)
     const system = createSystem(fsMap)
     const env = createVirtualTypeScriptEnvironment(
         system,
-        ['index.ts'],
+        [filename],
         ts,
         compilerOptions,
     )
 
     return [
-        ...env.languageService.getSyntacticDiagnostics('index.ts'),
-        ...env.languageService.getSemanticDiagnostics('index.ts'),
+        ...env.languageService.getSyntacticDiagnostics(filename),
+        ...env.languageService.getSemanticDiagnostics(filename),
     ]
         .map((d) => new SrcHighlight(d))
         .filter((highlight) => highlight.diagnostic.code != 1108)
