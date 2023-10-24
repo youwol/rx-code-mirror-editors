@@ -5,7 +5,7 @@ const runTimeDependencies = {
         "rxjs": "^6.5.5",
         "@youwol/cdn-client": "^1.0.2",
         "codemirror": "^5.52.0",
-        "typescript": "^4.7.4",
+        "typescript": "^5.2.2",
         "@youwol/logging": "^0.1.0",
         "@typescript/vfs": "^1.4.0"
     },
@@ -35,7 +35,7 @@ const externals = {
     "typescript": {
         "commonjs": "typescript",
         "commonjs2": "typescript",
-        "root": "ts_APIv4"
+        "root": "ts_APIv5"
     },
     "@youwol/logging": {
         "commonjs": "@youwol/logging",
@@ -74,7 +74,7 @@ const exportedSymbols = {
         "exportedSymbol": "CodeMirror"
     },
     "typescript": {
-        "apiKey": "4",
+        "apiKey": "5",
         "exportedSymbol": "ts"
     },
     "@youwol/logging": {
@@ -116,13 +116,13 @@ const entries = {
 export const setup = {
     name:'@youwol/fv-code-mirror-editors',
         assetId:'QHlvdXdvbC9mdi1jb2RlLW1pcnJvci1lZGl0b3Jz',
-    version:'0.2.3',
+    version:'0.3.0-wip',
     shortDescription:"Code editors (typescript, python) using codemirror & flux-view.",
-    developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/fv-code-mirror-editors',
+    developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/fv-code-mirror-editors&tab=doc',
     npmPackage:'https://www.npmjs.com/package/@youwol/fv-code-mirror-editors',
     sourceGithub:'https://github.com/youwol/fv-code-mirror-editors',
     userGuide:'https://l.youwol.com/doc/@youwol/fv-code-mirror-editors',
-    apiVersion:'02',
+    apiVersion:'03',
     runTimeDependencies,
     externals,
     exportedSymbols,
@@ -133,7 +133,7 @@ export const setup = {
     },
 
     installMainModule: ({cdnClient, installParameters}:{
-        cdnClient:{install:(unknown) => Promise<Window>},
+        cdnClient:{install:(unknown) => Promise<WindowOrWorkerGlobalScope>},
         installParameters?
     }) => {
         const parameters = installParameters || {}
@@ -147,12 +147,12 @@ export const setup = {
             modules,
             scripts,
         }).then(() => {
-            return window[`@youwol/fv-code-mirror-editors_APIv02`]
+            return window[`@youwol/fv-code-mirror-editors_APIv03`]
         })
     },
     installAuxiliaryModule: ({name, cdnClient, installParameters}:{
         name: string,
-        cdnClient:{install:(unknown) => Promise<Window>},
+        cdnClient:{install:(unknown) => Promise<WindowOrWorkerGlobalScope>},
         installParameters?
     }) => {
         const entry = secondaryEntries[name]
@@ -162,7 +162,7 @@ export const setup = {
         const parameters = installParameters || {}
         const scripts = [
             ...(parameters.scripts || []),
-            `@youwol/fv-code-mirror-editors#0.2.3~dist/@youwol/fv-code-mirror-editors/${entry.name}.js`
+            `@youwol/fv-code-mirror-editors#0.3.0-wip~dist/@youwol/fv-code-mirror-editors/${entry.name}.js`
         ]
         const modules = [
             ...(parameters.modules || []),
@@ -173,7 +173,7 @@ export const setup = {
             modules,
             scripts,
         }).then(() => {
-            return window[`@youwol/fv-code-mirror-editors/${entry.name}_APIv02`]
+            return window[`@youwol/fv-code-mirror-editors/${entry.name}_APIv03`]
         })
     },
     getCdnDependencies(name?: string){
