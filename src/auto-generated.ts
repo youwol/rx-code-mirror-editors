@@ -3,7 +3,7 @@ const runTimeDependencies = {
     "externals": {
         "@youwol/flux-view": "^1.0.3",
         "rxjs": "^6.5.5",
-        "@youwol/cdn-client": "^1.0.2",
+        "@youwol/cdn-client": "^2.1.2",
         "codemirror": "^5.52.0",
         "typescript": "^5.2.2",
         "@youwol/logging": "^0.1.0",
@@ -25,7 +25,7 @@ const externals = {
     "@youwol/cdn-client": {
         "commonjs": "@youwol/cdn-client",
         "commonjs2": "@youwol/cdn-client",
-        "root": "@youwol/cdn-client_APIv1"
+        "root": "@youwol/cdn-client_APIv2"
     },
     "codemirror": {
         "commonjs": "codemirror",
@@ -66,7 +66,7 @@ const exportedSymbols = {
         "exportedSymbol": "rxjs"
     },
     "@youwol/cdn-client": {
-        "apiKey": "1",
+        "apiKey": "2",
         "exportedSymbol": "@youwol/cdn-client"
     },
     "codemirror": {
@@ -116,7 +116,7 @@ const entries = {
 export const setup = {
     name:'@youwol/fv-code-mirror-editors',
         assetId:'QHlvdXdvbC9mdi1jb2RlLW1pcnJvci1lZGl0b3Jz',
-    version:'0.3.0',
+    version:'0.3.1-wip',
     shortDescription:"Code editors (typescript, python) using codemirror & flux-view.",
     developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/fv-code-mirror-editors&tab=doc',
     npmPackage:'https://www.npmjs.com/package/@youwol/fv-code-mirror-editors',
@@ -162,7 +162,7 @@ export const setup = {
         const parameters = installParameters || {}
         const scripts = [
             ...(parameters.scripts || []),
-            `@youwol/fv-code-mirror-editors#0.3.0~dist/@youwol/fv-code-mirror-editors/${entry.name}.js`
+            `@youwol/fv-code-mirror-editors#0.3.1-wip~dist/@youwol/fv-code-mirror-editors/${entry.name}.js`
         ]
         const modules = [
             ...(parameters.modules || []),

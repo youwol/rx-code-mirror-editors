@@ -1102,6 +1102,11 @@
   dependencies:
     debug "^4.1.1"
 
+"@ungap/custom-elements@1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@ungap/custom-elements/-/custom-elements-1.2.0.tgz#e211a25250af329b746eadc1a345b7df87e440ac"
+  integrity sha512-zdSuu79stAwVUtzkQU9B5jhGh2LavtkeX4kxd2jtMJmZt7QqRJ1KJW5bukt/vUOaUs3z674GHd+nqYm0bu0Gyg==
+
 "@ungap/structured-clone@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@ungap/structured-clone/-/structured-clone-1.2.0.tgz#756641adb587851b5ccb3e095daf27ae581c8406"
@@ -1374,11 +1379,13 @@
   resolved "https://registry.yarnpkg.com/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha512-NuHqBY1PB/D8xU6s/thBgOAiAP7HOYDQ32+BFZILJ8ivkUkAHQnWfn6WhL79Owj1qmUnoN/YPhktdIoucipkAQ==
 
-"@youwol/cdn-client@^1.0.2":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@youwol/cdn-client/-/cdn-client-1.0.10.tgz#2e240601625f3fe6d95a69f951c35cbd673f21ff"
-  integrity sha512-tUYFztmQ6kztkm1HBl7Qq0Fxbt5iuLuc9j+x9FXhti79UKN8121tBhLdG49hnlQcIIPw54UI4GOK2ggrDQcCWQ==
+"@youwol/cdn-client@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@youwol/cdn-client/-/cdn-client-2.1.2.tgz#8f026cebf7b77e136dbc00f5e3b0fdd8fa2e2673"
+  integrity sha512-BCsWqwid8e5UGPZZr9ig3wH+YtEHCCF11sK2Pe8pEwaAas+CzuemDf6ZfQLlhxr/o7JjUOsb1IUk3W0JCv7J0A==
   dependencies:
+    "@youwol/flux-view" "^1.1.0"
+    rxjs "^6.5.5"
     semver "^7.3.4"
 
 "@youwol/eslint-config@1.0.0":
@@ -1401,6 +1408,14 @@
   resolved "https://registry.yarnpkg.com/@youwol/flux-view/-/flux-view-1.1.0.tgz#6bd3a09ea5d6e059936cd734d2434dc52d367f93"
   integrity sha512-KsNJl/fpWTg26/7E1Lcc/bgOVxhPwwZe5uRV8uXU1G3c427TkXaj3j3VZMhbxLPKdueEC7QO+iE3n1DX2BJ/Dg==
   dependencies:
+    rxjs "^6.5.5"
+
+"@youwol/flux-view@^1.1.0":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@youwol/flux-view/-/flux-view-1.1.1.tgz#66c41672b913b99ace5ce6e70d05ad6a9daea579"
+  integrity sha512-/EWXYnRRpRI5BMu9IRcwqPJmlf9MZQMS6FaRp3yCzr9RAxhuAbvSZUDN18OJGg3hUvUtRTmQOUWtfQaVypH8Tg==
+  dependencies:
+    "@ungap/custom-elements" "1.2.0"
     rxjs "^6.5.5"
 
 "@youwol/jest-preset@1.0.0":
