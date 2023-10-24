@@ -3,7 +3,7 @@ from pathlib import Path
 
 from youwol.pipelines.pipeline_typescript_weback_npm import Template, PackageType, Dependencies, \
     RunTimeDeps, generate_template, AuxiliaryModule, Bundles, MainModule
-from youwol_utils import parse_json
+from youwol.utils import parse_json
 
 folder_path = Path(__file__).parent
 
@@ -22,16 +22,15 @@ template = Template(
             externals={
                 "@youwol/flux-view": "^1.0.3",
                 "rxjs": "^6.5.5",
-                "@youwol/cdn-client": "^1.0.2",
+                "@youwol/cdn-client": "^2.1.2",
                 "codemirror": "^5.52.0",
-                "typescript": "^4.7.4",
+                "typescript": "^5.2.2",
                 "@youwol/logging": "^0.1.0",
                 "@typescript/vfs": "^1.4.0"
             }
         ),
         devTime={
             "@types/codemirror": "^5.52.0",  # Required to generate doc
-            "@types/lz-string": "^1.3.34",  # Required to generate doc
             "lz-string": "^1.4.4",  # Required to generate doc
         }
     ),
