@@ -1,7 +1,7 @@
 {
     "name": "@youwol/fv-code-mirror-editors",
     "description": "Code editors (typescript, python) using codemirror & flux-view.",
-    "version": "0.3.1",
+    "version": "0.4.0-wip",
     "author": "greinisch@youwol.com",
     "homepage": "https://github.com/youwol/fv-code-mirror-editors#README.md",
     "main": "dist/@youwol/fv-code-mirror-editors.js",
