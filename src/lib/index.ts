@@ -1,4 +1,4 @@
-import * as cdnClient from '@youwol/cdn-client'
+import * as webpmClient from '@youwol/webpm-client'
 import { setup } from '../auto-generated'
 import { logFactory } from './log-factory.conf'
 export * as Common from './common'
@@ -28,7 +28,7 @@ export function TypescriptModule({
     return setup
         .installAuxiliaryModule({
             name: 'typescript-addon',
-            cdnClient,
+            cdnClient: webpmClient,
             installParameters: {
                 ...parameters,
                 scripts,
