@@ -3,8 +3,8 @@
     "description": "Code editors (typescript, python) using codemirror & flux-view.",
     "version": "0.4.0-wip",
     "author": "greinisch@youwol.com",
-    "homepage": "https://github.com/youwol/fv-code-mirror-editors#README.md",
-    "main": "dist/@youwol/fv-code-mirror-editors.js",
+    "homepage": "https://github.com/youwol/rx-code-mirror-editors#README.md",
+    "main": "dist/@youwol/rx-code-mirror-editors.js",
     "types": "src/index.ts",
     "scripts": {
         "clean": "del-cli dist",
@@ -28,12 +28,12 @@
         ]
     },
     "dependencies": {
-        "@youwol/flux-view": "^1.0.3",
-        "rxjs": "^6.5.5",
-        "@youwol/cdn-client": "^2.1.2",
+        "@youwol/rx-vdom": "^1.0.1",
+        "rxjs": "^7.5.6",
+        "@youwol/webpm-client": "^3.0.0",
         "codemirror": "^5.52.0",
+        "@youwol/logging": "^0.2.0",
         "typescript": "^5.2.2",
-        "@youwol/logging": "^0.1.0",
         "@typescript/vfs": "^1.4.0"
     },
     "devDependencies": {
@@ -58,11 +58,11 @@
     },
     "webpm": {
         "dependencies": {
-            "@youwol/flux-view": "^1.0.3",
-            "rxjs": "^6.5.5",
-            "@youwol/cdn-client": "^2.1.2",
+            "@youwol/rx-vdom": "^1.0.1",
+            "rxjs": "^7.5.6",
+            "@youwol/webpm-client": "^3.0.0",
             "codemirror": "^5.52.0",
-            "@youwol/logging": "^0.1.0"
+            "@youwol/logging": "^0.2.0"
         },
         "aliases": []
     }
