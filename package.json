@@ -1,5 +1,5 @@
 {
-    "name": "@youwol/fv-code-mirror-editors",
+    "name": "@youwol/rx-code-mirror-editors",
     "description": "Code editors (typescript, python) using codemirror & flux-view.",
     "version": "0.4.0-wip",
     "author": "greinisch@youwol.com",
