@@ -1,7 +1,7 @@
 import { combineLatest, ReplaySubject } from 'rxjs'
 import { SourcePath } from './models'
 import CodeMirror from 'codemirror'
-import { HTMLElement$, VirtualDOM } from '@youwol/flux-view'
+import { RxHTMLElement, ChildrenLike, VirtualDOM } from '@youwol/rx-vdom'
 import { IdeState } from './ide.state'
 import { filter } from 'rxjs/operators'
 
@@ -12,19 +12,20 @@ const defaultConfig = {
     lineWrapping: false,
     indentUnit: 4,
 }
-export class CodeEditorView {
+export class CodeEditorView implements VirtualDOM<'div'> {
+    public readonly tag = 'div'
     public readonly editorUid = `${Math.floor(Math.random()) * 1e6}`
     public readonly ideState: IdeState
     public readonly config: { [k: string]: unknown }
     public readonly language: string
     public readonly class = 'w-100 h-100 d-flex flex-column overflow-auto'
     public readonly style = {
-        'font-size': 'initial',
+        fontSize: 'initial' as const,
     }
     public readonly path: SourcePath
     public readonly change$ = new ReplaySubject<CodeMirror.EditorChange[]>(1)
     public readonly cursor$ = new ReplaySubject<CodeMirror.Position>(1)
-    public readonly children: VirtualDOM[]
+    public readonly children: ChildrenLike
 
     public readonly nativeEditor$ = new ReplaySubject<CodeMirror.Editor>(1)
 
@@ -55,9 +56,10 @@ export class CodeEditorView {
 
         this.children = [
             {
+                tag: 'div' as const,
                 id: 'code-mirror-editor',
                 class: 'w-100 h-100',
-                connectedCallback: (elem: HTMLElement$ & HTMLDivElement) => {
+                connectedCallback: (elem: RxHTMLElement<'div'>) => {
                     const editor: CodeMirror.Editor = window['CodeMirror'](
                         elem,
                         config,
