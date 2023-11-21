@@ -9,6 +9,13 @@ folder_path = Path(__file__).parent
 
 pkg_json = parse_json(folder_path / 'package.json')
 
+load_dependencies = {
+    "@youwol/rx-vdom": "^1.0.1",
+    "rxjs": "^7.5.6",
+    "@youwol/webpm-client": "^3.0.0",
+    "codemirror": "^5.52.0",
+    "@youwol/logging": "^0.2.0",
+}
 
 template = Template(
     path=folder_path,
@@ -20,12 +27,8 @@ template = Template(
     dependencies=Dependencies(
         runTime=RunTimeDeps(
             externals={
-                "@youwol/flux-view": "^1.0.3",
-                "rxjs": "^6.5.5",
-                "@youwol/cdn-client": "^2.1.2",
-                "codemirror": "^5.52.0",
-                "typescript": "^5.2.2",
-                "@youwol/logging": "^0.1.0",
+                **load_dependencies,
+                "typescript": "5.2.2",
                 "@typescript/vfs": "^1.4.0"
             }
         ),
@@ -37,7 +40,7 @@ template = Template(
     bundles=Bundles(
         mainModule=MainModule(
             entryFile="./lib/index.ts",
-            loadDependencies=["@youwol/flux-view", "rxjs", "@youwol/cdn-client", "codemirror", "@youwol/logging"]
+            loadDependencies=list(load_dependencies.keys())
         ),
         auxiliaryModules=[
             AuxiliaryModule(
@@ -56,8 +59,15 @@ shutil.copyfile(
     src=folder_path / '.template' / 'src' / 'auto-generated.ts',
     dst=folder_path / 'src' / 'auto-generated.ts'
 )
-for file in ['README.md', '.gitignore', '.npmignore', '.prettierignore', 'LICENSE', 'package.json',
-             'tsconfig.json', 'webpack.config.ts']:
+for file in [
+    'README.md',
+    '.gitignore',
+    '.npmignore',
+    '.prettierignore',
+    'LICENSE',
+    'package.json',
+    # 'tsconfig.json', references `rx-vdom-config.ts`
+    'webpack.config.ts']:
     shutil.copyfile(
         src=folder_path / '.template' / file,
         dst=folder_path / file

@@ -1,4 +1,4 @@
-# @youwol/fv-code-mirror-editors
+# @youwol/rx-code-mirror-editors
 
 Code editors (typescript, python) using codemirror & flux-view.
 
@@ -7,13 +7,13 @@ This library is part of the hybrid cloud/local ecosystem
 
 ## Links
 
-[Online user-guide](https://l.youwol.com/doc/@youwol/fv-code-mirror-editors)
+[Online user-guide](https://l.youwol.com/doc/@youwol/rx-code-mirror-editors)
 
-[Developers documentation](https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/fv-code-mirror-editors&tab=doc)
+[Developers documentation](https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/rx-code-mirror-editors&tab=doc)
 
-[Package on npm](https://www.npmjs.com/package/@youwol/fv-code-mirror-editors)
+[Package on npm](https://www.npmjs.com/package/@youwol/rx-code-mirror-editors)
 
-[Source on GitHub](https://github.com/youwol/fv-code-mirror-editors)
+[Source on GitHub](https://github.com/youwol/rx-code-mirror-editors)
 
 # Installation, Build, Test
 

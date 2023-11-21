@@ -1,46 +1,46 @@
 
 const runTimeDependencies = {
     "externals": {
-        "@youwol/flux-view": "^1.0.3",
-        "rxjs": "^6.5.5",
-        "@youwol/cdn-client": "^2.1.2",
+        "@youwol/rx-vdom": "^1.0.1",
+        "rxjs": "^7.5.6",
+        "@youwol/webpm-client": "^3.0.0",
         "codemirror": "^5.52.0",
-        "typescript": "^5.2.2",
-        "@youwol/logging": "^0.1.0",
+        "@youwol/logging": "^0.2.0",
+        "typescript": "5.2.2",
         "@typescript/vfs": "^1.4.0"
     },
     "includedInBundle": {}
 }
 const externals = {
-    "@youwol/flux-view": {
-        "commonjs": "@youwol/flux-view",
-        "commonjs2": "@youwol/flux-view",
-        "root": "@youwol/flux-view_APIv1"
+    "@youwol/rx-vdom": {
+        "commonjs": "@youwol/rx-vdom",
+        "commonjs2": "@youwol/rx-vdom",
+        "root": "@youwol/rx-vdom_APIv1"
     },
     "rxjs": {
         "commonjs": "rxjs",
         "commonjs2": "rxjs",
-        "root": "rxjs_APIv6"
+        "root": "rxjs_APIv7"
     },
-    "@youwol/cdn-client": {
-        "commonjs": "@youwol/cdn-client",
-        "commonjs2": "@youwol/cdn-client",
-        "root": "@youwol/cdn-client_APIv2"
+    "@youwol/webpm-client": {
+        "commonjs": "@youwol/webpm-client",
+        "commonjs2": "@youwol/webpm-client",
+        "root": "@youwol/webpm-client_APIv3"
     },
     "codemirror": {
         "commonjs": "codemirror",
         "commonjs2": "codemirror",
         "root": "CodeMirror_APIv5"
     },
+    "@youwol/logging": {
+        "commonjs": "@youwol/logging",
+        "commonjs2": "@youwol/logging",
+        "root": "@youwol/logging_APIv02"
+    },
     "typescript": {
         "commonjs": "typescript",
         "commonjs2": "typescript",
         "root": "ts_APIv5"
-    },
-    "@youwol/logging": {
-        "commonjs": "@youwol/logging",
-        "commonjs2": "@youwol/logging",
-        "root": "@youwol/logging_APIv01"
     },
     "@typescript/vfs": {
         "commonjs": "@typescript/vfs",
@@ -51,35 +51,35 @@ const externals = {
         "commonjs": "rxjs/operators",
         "commonjs2": "rxjs/operators",
         "root": [
-            "rxjs_APIv6",
+            "rxjs_APIv7",
             "operators"
         ]
     }
 }
 const exportedSymbols = {
-    "@youwol/flux-view": {
+    "@youwol/rx-vdom": {
         "apiKey": "1",
-        "exportedSymbol": "@youwol/flux-view"
+        "exportedSymbol": "@youwol/rx-vdom"
     },
     "rxjs": {
-        "apiKey": "6",
+        "apiKey": "7",
         "exportedSymbol": "rxjs"
     },
-    "@youwol/cdn-client": {
-        "apiKey": "2",
-        "exportedSymbol": "@youwol/cdn-client"
+    "@youwol/webpm-client": {
+        "apiKey": "3",
+        "exportedSymbol": "@youwol/webpm-client"
     },
     "codemirror": {
         "apiKey": "5",
         "exportedSymbol": "CodeMirror"
     },
+    "@youwol/logging": {
+        "apiKey": "02",
+        "exportedSymbol": "@youwol/logging"
+    },
     "typescript": {
         "apiKey": "5",
         "exportedSymbol": "ts"
-    },
-    "@youwol/logging": {
-        "apiKey": "01",
-        "exportedSymbol": "@youwol/logging"
     },
     "@typescript/vfs": {
         "apiKey": "1",
@@ -90,9 +90,9 @@ const exportedSymbols = {
 const mainEntry : {entryFile: string,loadDependencies:string[]} = {
     "entryFile": "./lib/index.ts",
     "loadDependencies": [
-        "@youwol/flux-view",
+        "@youwol/rx-vdom",
         "rxjs",
-        "@youwol/cdn-client",
+        "@youwol/webpm-client",
         "codemirror",
         "@youwol/logging"
     ]
@@ -110,19 +110,19 @@ const secondaryEntries : {[k:string]:{entryFile: string, name: string, loadDepen
 }
 
 const entries = {
-     '@youwol/fv-code-mirror-editors': './lib/index.ts',
-    ...Object.values(secondaryEntries).reduce( (acc,e) => ({...acc, [`@youwol/fv-code-mirror-editors/${e.name}`]:e.entryFile}), {})
+     '@youwol/rx-code-mirror-editors': './lib/index.ts',
+    ...Object.values(secondaryEntries).reduce( (acc,e) => ({...acc, [`@youwol/rx-code-mirror-editors/${e.name}`]:e.entryFile}), {})
 }
 export const setup = {
-    name:'@youwol/fv-code-mirror-editors',
-        assetId:'QHlvdXdvbC9mdi1jb2RlLW1pcnJvci1lZGl0b3Jz',
-    version:'0.3.1',
+    name:'@youwol/rx-code-mirror-editors',
+        assetId:'QHlvdXdvbC9yeC1jb2RlLW1pcnJvci1lZGl0b3Jz',
+    version:'0.4.2-wip',
     shortDescription:"Code editors (typescript, python) using codemirror & flux-view.",
-    developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/fv-code-mirror-editors&tab=doc',
-    npmPackage:'https://www.npmjs.com/package/@youwol/fv-code-mirror-editors',
-    sourceGithub:'https://github.com/youwol/fv-code-mirror-editors',
-    userGuide:'https://l.youwol.com/doc/@youwol/fv-code-mirror-editors',
-    apiVersion:'03',
+    developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/rx-code-mirror-editors&tab=doc',
+    npmPackage:'https://www.npmjs.com/package/@youwol/rx-code-mirror-editors',
+    sourceGithub:'https://github.com/youwol/rx-code-mirror-editors',
+    userGuide:'https://l.youwol.com/doc/@youwol/rx-code-mirror-editors',
+    apiVersion:'04',
     runTimeDependencies,
     externals,
     exportedSymbols,
@@ -147,7 +147,7 @@ export const setup = {
             modules,
             scripts,
         }).then(() => {
-            return window[`@youwol/fv-code-mirror-editors_APIv03`]
+            return window[`@youwol/rx-code-mirror-editors_APIv04`]
         })
     },
     installAuxiliaryModule: ({name, cdnClient, installParameters}:{
@@ -162,7 +162,7 @@ export const setup = {
         const parameters = installParameters || {}
         const scripts = [
             ...(parameters.scripts || []),
-            `@youwol/fv-code-mirror-editors#0.3.1~dist/@youwol/fv-code-mirror-editors/${entry.name}.js`
+            `@youwol/rx-code-mirror-editors#0.4.2-wip~dist/@youwol/rx-code-mirror-editors/${entry.name}.js`
         ]
         const modules = [
             ...(parameters.modules || []),
@@ -173,7 +173,7 @@ export const setup = {
             modules,
             scripts,
         }).then(() => {
-            return window[`@youwol/fv-code-mirror-editors/${entry.name}_APIv03`]
+            return window[`@youwol/rx-code-mirror-editors/${entry.name}_APIv04`]
         })
     },
     getCdnDependencies(name?: string){
