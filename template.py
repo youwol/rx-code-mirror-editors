@@ -28,7 +28,7 @@ template = Template(
         runTime=RunTimeDeps(
             externals={
                 **load_dependencies,
-                "typescript": "^5.2.2",
+                "typescript": "5.2.2",
                 "@typescript/vfs": "^1.4.0"
             }
         ),
