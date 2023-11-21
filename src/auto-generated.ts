@@ -6,7 +6,7 @@ const runTimeDependencies = {
         "@youwol/webpm-client": "^3.0.0",
         "codemirror": "^5.52.0",
         "@youwol/logging": "^0.2.0",
-        "typescript": "^5.2.2",
+        "typescript": "5.2.2",
         "@typescript/vfs": "^1.4.0"
     },
     "includedInBundle": {}
