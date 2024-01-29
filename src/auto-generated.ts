@@ -116,13 +116,13 @@ const entries = {
 export const setup = {
     name:'@youwol/rx-code-mirror-editors',
         assetId:'QHlvdXdvbC9yeC1jb2RlLW1pcnJvci1lZGl0b3Jz',
-    version:'0.4.2-wip',
+    version:'0.5.0-wip',
     shortDescription:"Code editors (typescript, python) using codemirror & flux-view.",
     developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/rx-code-mirror-editors&tab=doc',
     npmPackage:'https://www.npmjs.com/package/@youwol/rx-code-mirror-editors',
     sourceGithub:'https://github.com/youwol/rx-code-mirror-editors',
     userGuide:'https://l.youwol.com/doc/@youwol/rx-code-mirror-editors',
-    apiVersion:'04',
+    apiVersion:'05',
     runTimeDependencies,
     externals,
     exportedSymbols,
@@ -147,7 +147,7 @@ export const setup = {
             modules,
             scripts,
         }).then(() => {
-            return window[`@youwol/rx-code-mirror-editors_APIv04`]
+            return window[`@youwol/rx-code-mirror-editors_APIv05`]
         })
     },
     installAuxiliaryModule: ({name, cdnClient, installParameters}:{
@@ -162,7 +162,7 @@ export const setup = {
         const parameters = installParameters || {}
         const scripts = [
             ...(parameters.scripts || []),
-            `@youwol/rx-code-mirror-editors#0.4.2-wip~dist/@youwol/rx-code-mirror-editors/${entry.name}.js`
+            `@youwol/rx-code-mirror-editors#0.5.0-wip~dist/@youwol/rx-code-mirror-editors/${entry.name}.js`
         ]
         const modules = [
             ...(parameters.modules || []),
@@ -173,7 +173,7 @@ export const setup = {
             modules,
             scripts,
         }).then(() => {
-            return window[`@youwol/rx-code-mirror-editors/${entry.name}_APIv04`]
+            return window[`@youwol/rx-code-mirror-editors/${entry.name}_APIv05`]
         })
     },
     getCdnDependencies(name?: string){

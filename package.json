@@ -1,7 +1,7 @@
 {
     "name": "@youwol/rx-code-mirror-editors",
     "description": "Code editors (typescript, python) using codemirror & flux-view.",
-    "version": "0.4.2-wip",
+    "version": "0.5.0-wip",
     "author": "greinisch@youwol.com",
     "homepage": "https://github.com/youwol/rx-code-mirror-editors#README.md",
     "main": "dist/@youwol/rx-code-mirror-editors.js",
