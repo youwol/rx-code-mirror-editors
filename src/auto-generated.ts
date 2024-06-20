@@ -1,26 +1,31 @@
 
 const runTimeDependencies = {
     "externals": {
+        "@typescript/vfs": "^1.4.0",
+        "@youwol/logging": "^0.2.0",
         "@youwol/rx-vdom": "^1.0.1",
-        "rxjs": "^7.5.6",
         "@youwol/webpm-client": "^3.0.0",
         "codemirror": "^5.52.0",
-        "@youwol/logging": "^0.2.0",
-        "typescript": "5.3.3",
-        "@typescript/vfs": "^1.4.0"
+        "rxjs": "^7.5.6",
+        "typescript": "5.3.3"
     },
     "includedInBundle": {}
 }
 const externals = {
+    "@typescript/vfs": {
+        "commonjs": "@typescript/vfs",
+        "commonjs2": "@typescript/vfs",
+        "root": "@typescript/vfs_APIv1"
+    },
+    "@youwol/logging": {
+        "commonjs": "@youwol/logging",
+        "commonjs2": "@youwol/logging",
+        "root": "@youwol/logging_APIv02"
+    },
     "@youwol/rx-vdom": {
         "commonjs": "@youwol/rx-vdom",
         "commonjs2": "@youwol/rx-vdom",
         "root": "@youwol/rx-vdom_APIv1"
-    },
-    "rxjs": {
-        "commonjs": "rxjs",
-        "commonjs2": "rxjs",
-        "root": "rxjs_APIv7"
     },
     "@youwol/webpm-client": {
         "commonjs": "@youwol/webpm-client",
@@ -32,20 +37,10 @@ const externals = {
         "commonjs2": "codemirror",
         "root": "CodeMirror_APIv5"
     },
-    "@youwol/logging": {
-        "commonjs": "@youwol/logging",
-        "commonjs2": "@youwol/logging",
-        "root": "@youwol/logging_APIv02"
-    },
-    "typescript": {
-        "commonjs": "typescript",
-        "commonjs2": "typescript",
-        "root": "ts_APIv5"
-    },
-    "@typescript/vfs": {
-        "commonjs": "@typescript/vfs",
-        "commonjs2": "@typescript/vfs",
-        "root": "@typescript/vfs_APIv1"
+    "rxjs": {
+        "commonjs": "rxjs",
+        "commonjs2": "rxjs",
+        "root": "rxjs_APIv7"
     },
     "rxjs/operators": {
         "commonjs": "rxjs/operators",
@@ -54,16 +49,25 @@ const externals = {
             "rxjs_APIv7",
             "operators"
         ]
+    },
+    "typescript": {
+        "commonjs": "typescript",
+        "commonjs2": "typescript",
+        "root": "ts_APIv5"
     }
 }
 const exportedSymbols = {
+    "@typescript/vfs": {
+        "apiKey": "1",
+        "exportedSymbol": "@typescript/vfs"
+    },
+    "@youwol/logging": {
+        "apiKey": "02",
+        "exportedSymbol": "@youwol/logging"
+    },
     "@youwol/rx-vdom": {
         "apiKey": "1",
         "exportedSymbol": "@youwol/rx-vdom"
-    },
-    "rxjs": {
-        "apiKey": "7",
-        "exportedSymbol": "rxjs"
     },
     "@youwol/webpm-client": {
         "apiKey": "3",
@@ -73,17 +77,13 @@ const exportedSymbols = {
         "apiKey": "5",
         "exportedSymbol": "CodeMirror"
     },
-    "@youwol/logging": {
-        "apiKey": "02",
-        "exportedSymbol": "@youwol/logging"
+    "rxjs": {
+        "apiKey": "7",
+        "exportedSymbol": "rxjs"
     },
     "typescript": {
         "apiKey": "5",
         "exportedSymbol": "ts"
-    },
-    "@typescript/vfs": {
-        "apiKey": "1",
-        "exportedSymbol": "@typescript/vfs"
     }
 }
 
