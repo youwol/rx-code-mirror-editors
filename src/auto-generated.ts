@@ -35,7 +35,7 @@ const externals = {
     "codemirror": {
         "commonjs": "codemirror",
         "commonjs2": "codemirror",
-        "root": "CodeMirror_APIv5"
+        "root": "codemirror_APIv5"
     },
     "rxjs": {
         "commonjs": "rxjs",
@@ -53,7 +53,7 @@ const externals = {
     "typescript": {
         "commonjs": "typescript",
         "commonjs2": "typescript",
-        "root": "ts_APIv5"
+        "root": "typescript_APIv5"
     }
 }
 const exportedSymbols = {
@@ -75,7 +75,7 @@ const exportedSymbols = {
     },
     "codemirror": {
         "apiKey": "5",
-        "exportedSymbol": "CodeMirror"
+        "exportedSymbol": "codemirror"
     },
     "rxjs": {
         "apiKey": "7",
@@ -83,7 +83,7 @@ const exportedSymbols = {
     },
     "typescript": {
         "apiKey": "5",
-        "exportedSymbol": "ts"
+        "exportedSymbol": "typescript"
     }
 }
 
