@@ -35,7 +35,7 @@ const externals = {
     "codemirror": {
         "commonjs": "codemirror",
         "commonjs2": "codemirror",
-        "root": "CodeMirror_APIv5"
+        "root": "codemirror_APIv5"
     },
     "rxjs": {
         "commonjs": "rxjs",
@@ -53,7 +53,7 @@ const externals = {
     "typescript": {
         "commonjs": "typescript",
         "commonjs2": "typescript",
-        "root": "ts_APIv5"
+        "root": "typescript_APIv5"
     }
 }
 const exportedSymbols = {
@@ -75,7 +75,7 @@ const exportedSymbols = {
     },
     "codemirror": {
         "apiKey": "5",
-        "exportedSymbol": "CodeMirror"
+        "exportedSymbol": "codemirror"
     },
     "rxjs": {
         "apiKey": "7",
@@ -83,7 +83,7 @@ const exportedSymbols = {
     },
     "typescript": {
         "apiKey": "5",
-        "exportedSymbol": "ts"
+        "exportedSymbol": "typescript"
     }
 }
 
@@ -116,7 +116,7 @@ const entries = {
 export const setup = {
     name:'@youwol/rx-code-mirror-editors',
         assetId:'QHlvdXdvbC9yeC1jb2RlLW1pcnJvci1lZGl0b3Jz',
-    version:'0.5.1-wip',
+    version:'0.5.2-wip',
     shortDescription:"Code editors (typescript, python) using codemirror & flux-view.",
     developerDocumentation:'https://platform.youwol.com/applications/@youwol/cdn-explorer/latest?package=@youwol/rx-code-mirror-editors&tab=doc',
     npmPackage:'https://www.npmjs.com/package/@youwol/rx-code-mirror-editors',
@@ -162,7 +162,7 @@ export const setup = {
         const parameters = installParameters || {}
         const scripts = [
             ...(parameters.scripts || []),
-            `@youwol/rx-code-mirror-editors#0.5.1-wip~dist/@youwol/rx-code-mirror-editors/${entry.name}.js`
+            `@youwol/rx-code-mirror-editors#0.5.2-wip~dist/@youwol/rx-code-mirror-editors/${entry.name}.js`
         ]
         const modules = [
             ...(parameters.modules || []),
